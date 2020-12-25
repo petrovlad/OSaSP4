@@ -1,5 +1,8 @@
 #include "TaskQueue.h"
 
+
+std::mutex mutex;
+
 TaskQueue::TaskQueue()
 {
 
@@ -21,12 +24,12 @@ void TaskQueue::popTask()
 	mutex.unlock();
 }
 
-TTask* TaskQueue::frontTask() 
+TTask TaskQueue::frontTask() 
 {
 	mutex.lock();
-	TTask* task;
+	TTask task;
 	if (!this->taskQueue.empty()) {
-		task = &(this->taskQueue.front());
+		task = this->taskQueue.front();
 	}
 	else {
 		task = nullptr;
@@ -34,4 +37,3 @@ TTask* TaskQueue::frontTask()
 	mutex.unlock();
 	return task;
 }
-

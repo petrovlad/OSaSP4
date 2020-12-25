@@ -10,13 +10,12 @@ typedef std::function<void()> TTask;
 
 class TaskQueue {
 private:
-	std::mutex mutex;
 	std::queue<TTask> taskQueue;
 public:
 	TaskQueue();
 	void pushTask(const TTask &task);
 	void popTask();
-	TTask* frontTask();
+	TTask frontTask();
 };
 
 #endif

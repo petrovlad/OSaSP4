@@ -6,7 +6,7 @@
 class TaskPerformer {
 	private:
 		int numOfThreads;
-		TaskQueue *taskQueue;
+		TaskQueue taskQueue;
 	public:
 		TaskPerformer(TaskQueue taskQueue, int numOfThreads);
 		void Perform();
